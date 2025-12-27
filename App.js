@@ -10,5 +10,6 @@ const parent = React.createElement(
     React.createElement("h2",{id:"heading2"},"I am h2 tag inside child div")
   ])
 );
+const jsxheading = <h1>this is jsx</h1>
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(parent)
+root.render(jsxheading)
