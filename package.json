@@ -18,8 +18,8 @@
   "author": "Akshay Saini",
   "type": "commonjs",
   "scripts": {
-    "test": "jest"
-  },
+    "test": "jest",
+   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
