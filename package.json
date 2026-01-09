@@ -19,6 +19,8 @@
   "type": "commonjs",
   "scripts": {
     "test": "jest",
+    "start": "parcel index.html"
+
    },
   "devDependencies": {
     "@babel/core": "^7.22.9",
