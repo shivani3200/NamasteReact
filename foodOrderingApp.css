@@ -5,13 +5,16 @@
 .header{
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100px;
+    height: 70px;
     background-color: rgb(213, 213, 91);
     align-items: center;
 }
 img{
-    height: 100px;
+    height: 70;
 }
 .nav-items>ul{
 display: flex;
@@ -28,9 +31,12 @@ list-style-type:none ;
     background-color: #fff;
 }
 .search{
-    margin: 20px;
-    padding: 20px;
+    width: 30%;
+    margin-top: 90px;
+    margin-left: 20px;
+    padding: 10px;
     border: 1px solid black;
+    border-radius: 16px;
 }
 .res-container{
     display: grid;
@@ -39,7 +45,10 @@ list-style-type:none ;
 }
 .res-card{
     background-color: #bbe1ff;
-    height: 300px;
+  min-height: 350px;      /* ensures card is readable */
+  height: auto;           /* grows with content */
+  overflow: hidden;       /* hides anything outside */
+  word-wrap: break-word;  /* wrap long text */
     width: 200px;
     padding: 10px;
     margin: 20px;
@@ -55,6 +64,7 @@ list-style-type:none ;
 .res-card img{
     width: 100%;
     border-radius: 25px;
+    min-height: 100px;
 }
 .footer{
     width: 100%;
