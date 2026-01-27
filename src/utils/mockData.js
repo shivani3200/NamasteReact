@@ -10,7 +10,7 @@ const restaurants = [
             cuisines: [
                 "Sweets"
             ],
-            avgRating: 4.6,
+            avgRating: 3.5,
             veg: true,
             parentId: "4700",
             avgRatingString: "4.6",
@@ -310,7 +310,7 @@ const restaurants = [
                 "Sweets",
                 "Chinese"
             ],
-            avgRating: 4.6,
+            avgRating: 3.6,
             veg: true,
             parentId: "22",
             avgRatingString: "4.6",
@@ -516,7 +516,7 @@ const restaurants = [
             cuisines: [
                 "Bakery"
             ],
-            avgRating: 4.5,
+            avgRating: 3.5,
             parentId: "1040",
             avgRatingString: "4.5",
             totalRatingsString: "8.8K+",
@@ -625,7 +625,7 @@ const restaurants = [
                 "Bakery",
                 "Ice Cream"
             ],
-            avgRating: 4.4,
+            avgRating: 3.4,
             parentId: "195515",
             avgRatingString: "4.4",
             totalRatingsString: "2.9K+",
