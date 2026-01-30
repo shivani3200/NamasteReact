@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 
@@ -156,7 +156,26 @@ const Body = () => {
 // ]
 // );
 
-const [listOfRestaurants, setListOfRestaurants] = useState(restaurants);
+// const [listOfRestaurants, setListOfRestaurants] = useState(restaurants);
+const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+useEffect(() => {
+    fetchData();
+},[]);
+
+
+const fetchData = async () =>{
+    // API call to get the data from server
+    // update the state variable - listOfRestaurants
+    const data = await fetch("https://corsproxy.io/?url=https://namastedev.com/api/v1/listRestaurants");
+
+    const json =  await data.json();
+    console.log(json);
+    setListOfRestaurants(json?.data?.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);    
+}
+if(listOfRestaurants.length === 0){
+    return <h1>Loading....</h1>
+}
     return (
         <div className="body">
             {/* <div className="search">search</div> */}
