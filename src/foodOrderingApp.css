@@ -48,7 +48,8 @@ list-style-type:none ;
 }
 .res-container{
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(6,1fr);
+    flex-wrap: wrap;
     gap: 10px;
 }
 .res-card{
@@ -59,7 +60,7 @@ list-style-type:none ;
   word-wrap: break-word;  /* wrap long text */
     width: 200px;
     padding: 10px;
-    margin: 20px;
+    /* margin: 5px; */
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -85,4 +86,17 @@ list-style-type:none ;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.shimmer-container{
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+.shimmer-card{
+    background-color: #e0e0e0;
+    height: 350px;
+    margin: 20px;
+    border-radius: 16px;
+    animation: shimmer 1.5s infinite;
 }

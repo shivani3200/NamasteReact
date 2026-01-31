@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
+import Shimmer from "./Shimmer";
 
 
 
@@ -173,10 +174,10 @@ const fetchData = async () =>{
     console.log(json);
     setListOfRestaurants(json?.data?.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);    
 }
-if(listOfRestaurants.length === 0){
-    return <h1>Loading....</h1>
-}
-    return (
+// if(listOfRestaurants.length === 0){
+//     return <Shimmer />;
+// }
+    return listOfRestaurants.length === 0?<Shimmer />:(
         <div className="body">
             {/* <div className="search">search</div> */}
             <button className="filter-btn" onClick={() => {
