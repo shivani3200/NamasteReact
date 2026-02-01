@@ -16,9 +16,9 @@ export const Header = () => {
                     <li>About</li>
                     <li>Contact</li>
                     <li>cart</li>
-                    <button className="btn" onClick={()=>(
+                    <button className="btn" onClick={()=> {
                         btnName==="Login"?setBtnName("Logout"):setBtnName("Login")
-                    )}>{btnName}</button>
+                    }}>{btnName}</button>
                 </ul>
             </div>
         </div>

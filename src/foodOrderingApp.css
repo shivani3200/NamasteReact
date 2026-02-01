@@ -1,102 +1,128 @@
-*{
-    margin: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
-.header{
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    color: #bbe1ff;
-    background-color: rgb(8, 64, 76);
-    align-items: center;
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  color: #bbe1ff;
+  background-color: rgb(8, 64, 76);
+  align-items: center;
 }
-img{
-    height: 75px;
-    width: 150px;
+img {
+  height: 75px;
+  width: 150px;
 }
-.nav-items>ul{
-display: flex;
-gap: 10px;
-font-size: 24px;
-padding: 0px 20px;
-list-style-type:none ;
+.nav-items > ul {
+  display: flex;
+  gap: 10px;
+  font-size: 24px;
+  padding: 0px 20px;
+  list-style-type: none;
 }
-.nav-items>ul>li{
-    padding: 10px;
-    margin: 10px;
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
 }
-.body{
-    background-color: #fff;
+.body {
+  background-color: #fff;
 }
-.search{
-    width: 30%;
-    margin-top: 90px;
-    margin-left: 20px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 16px;
+.search {
+  width: 30%;
+  height: 40px;
+  /* margin-top: 90px; */
+  margin-left: 20px;
+
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 16px;
 }
-.filter-btn{
-    width: 20%;
-    margin-top: 90px;
-    margin-left: 20px;
-    cursor: pointer;
+.filter-btn {
+  width: 20%;
+  margin-left: 20px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  /* border-radius: 16px; */
+  cursor: pointer;
 }
-.res-container{
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
-    flex-wrap: wrap;
-    gap: 10px;
+.filter-btn:hover {
+  background-color: lightgray;
+  border: none;
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
 }
-.res-card{
-    background-color: #bbe1ff;
-  min-height: 350px;      /* ensures card is readable */
-  height: auto;           /* grows with content */
-  overflow: hidden;       /* hides anything outside */
-  word-wrap: break-word;  /* wrap long text */
-    width: 200px;
-    padding: 10px;
-    /* margin: 5px; */
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.res-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.res-card:hover{
-    border: 1px solid gray;
-    cursor: pointer;
+.res-card {
+  background-color: #bbe1ff;
+  min-height: 350px; /* ensures card is readable */
+  height: auto; /* grows with content */
+  overflow: hidden; /* hides anything outside */
+  word-wrap: break-word; /* wrap long text */
+  width: 200px;
+  padding: 10px;
+  /* margin: 5px; */
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.res-card img{
-    width: 100%;
-    border-radius: 25px;
-    min-height: 100px;
+.res-card:hover {
+  border: 1px solid gray;
+  cursor: pointer;
 }
-.footer{
-    width: 100%;
-    height: 50px;
-    position: fixed;
-    bottom: 0;
-    background-color: darkblue;
-    color: #bbe1ff;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.res-card img {
+  width: 100%;
+  border-radius: 25px;
+  min-height: 100px;
 }
-.shimmer-container{
-    display:grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 10px;
-    margin-top: 20px;
+.footer {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  background-color: darkblue;
+  color: #bbe1ff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.shimmer-card{
-    background-color: #e0e0e0;
-    height: 350px;
-    margin: 20px;
-    border-radius: 16px;
-    animation: shimmer 1.5s infinite;
+
+.shimmer-wrapper {
+  width: 100%;
+  margin-top: 150px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.shimmer-card {
+  background-color: #f5f2f2;
+  width: 200px;
+  height: 350px;
+  margin: 20px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: shimmer 2s ease infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 10% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
