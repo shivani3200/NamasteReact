@@ -1,6 +1,6 @@
 const Contact =() =>{
   return(
-    <div style={{margin: "0 auto", marginTop: "100px", padding: "50px", maxWidth: "600px", textAlign: "center"}}>
+    <div style={{margin: "0 auto", marginTop: "100px", padding: "50px", maxWidth: "600px", textAlign: "center", backgroundColor: "#fbece6"}}>
       <h1>Contact Us</h1>
       <p>This is the Contact page of our application.</p>
     </div>

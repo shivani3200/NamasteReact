@@ -15,13 +15,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 const AppLayout = () => {
     return (
@@ -49,6 +50,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />,
+            },
+            {
+                path: "/restaurant/:resId",
+                element: <RestaurantMenu />,
             }
         ],
         errorElement: <Error />,
