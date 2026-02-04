@@ -71,6 +71,10 @@ img {
   flex-wrap: wrap;
   gap: 10px;
 }
+.res-container a {
+  text-decoration: none;
+  color: inherit;
+}
 .res-card {
   background-color: #bbe1ff;
   min-height: 350px; /* ensures card is readable */

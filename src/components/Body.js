@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // normal js variable
 // let listOfRestaurants = [
@@ -204,7 +205,7 @@ const Body = () => {
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button onClick={() => {
-          const filteredList = listOfRestaurants.filter(res => 
+          const filteredList = listOfRestaurants.filter(res =>
             res.info.name.toLowerCase().includes(searchText.toLowerCase())
           );
           setFilteredRestaurants(filteredList);
@@ -226,10 +227,16 @@ const Body = () => {
       </div>
 
       <div className="res-container">
+
         {filteredRestaurants.map((res) => (
-          <RestaurantCard key={res.info.id} resData={res} />
-        ))}
+          
+          // making each restaurant card clickable
+          <Link to={"/restaurant/" + res.info.id}
+            key={res.info.id}>
+            <RestaurantCard key={res.info.id} resData={res} />
+          </Link>))}
         ;
+
       </div>
     </div>
   );
