@@ -138,3 +138,20 @@ img {
     background-position: -100% 0;
   }
 }
+.user-profile {
+  width: 200px;
+  min-height: 300px;
+  border-radius: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  background: #e6e6f1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.user-profile:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
