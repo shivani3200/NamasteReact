@@ -9,10 +9,24 @@ class UserClass extends React.Component {
       count: 0,
       count2: 2
     }
+    console.log("child - constructor");
   };
+
+  async componentDidMount(){
+    console.log("child - componentDidMount");
+  }
+
+  componentDidUpdate(){
+    console.log("child - componentDidUpdate");
+  }
+
+  componentWillUnmount(){
+    console.log("child - componentWillUnmount");
+  }
 
 
   render() {
+    console.log("child - render");
     const { name, email, phone } = this.props;
     const { count, count2 } = this.state;
     return <>
@@ -40,8 +54,6 @@ class UserClass extends React.Component {
           }}>+</button>
 
         </div>
-
-
 
         <h3>Count2: {count2}</h3>
 
