@@ -3,7 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "./useOnlineStatus";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 // normal js variable
 // let listOfRestaurants = [
