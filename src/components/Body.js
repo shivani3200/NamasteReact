@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "./useOnlineStatus";
 
 // normal js variable
 // let listOfRestaurants = [
@@ -184,6 +185,10 @@ const Body = () => {
   // if(listOfRestaurants.length === 0){
   //     return <Shimmer />;
   // }
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return <h1 className="about-container">🔴 You are offline. Please check your internet connection.</h1>
+  }
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -229,7 +234,7 @@ const Body = () => {
       <div className="res-container">
 
         {filteredRestaurants.map((res) => (
-          
+
           // making each restaurant card clickable
           <Link to={"/restaurant/" + res.info.id}
             key={res.info.id}>
