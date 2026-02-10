@@ -12,7 +12,7 @@
 // -copyright
 // -contact
 
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -23,6 +23,15 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+// import Grocery from "./components/Grocery";
+
+// chunking and code splitting
+// dynamic loading
+// on demand loading
+// lazy loading
+// when we load the app, we dont want to load the code for grocery because it is not required at that time, we will load it when user clicks on grocery link
+
+const Grocery = lazy(()=> import("./components/Grocery"));
 
 const AppLayout = () => {
     return (
@@ -41,8 +50,7 @@ const appRouter = createBrowserRouter([
             {
                 path: "/",
                 element: <Body />,
-            }
-            ,
+            },
             {
                 path: "/about",
                 element: <About />,
@@ -50,6 +58,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />,
+            },
+            {
+                path: "/grocery",
+                element: <Suspense fallback = {<h1 className="about-container">Loading...</h1>}><Grocery /></Suspense>,
             },
             {
                 path: "/restaurant/:resId",
