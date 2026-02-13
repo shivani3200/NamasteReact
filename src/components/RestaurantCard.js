@@ -26,4 +26,18 @@ const RestaurantCard = (props) => {
     </div>
   );
 };
+
+// Higher order restaurant - HOC for promoted restaurant card
+// This HOC takes a RestaurantCard component and returns a new component that adds a "Promoted" label to it.
+export const PromotedRestaurant =(RestaurantCard)=>{
+  return (props) =>{
+    return(
+      <div className="relative" >
+        <RestaurantCard {...props}/>
+        <label className="promoted-label absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Promoted</label>
+      </div>
+    )
+  }
+
+}
 export default RestaurantCard;

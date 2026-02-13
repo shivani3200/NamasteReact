@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { PromotedRestaurant } from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -236,7 +236,8 @@ const Body = () => {
           // making each restaurant card clickable
           <Link to={"/restaurant/" + res.info.id}
             key={res.info.id}>
-            <RestaurantCard key={res.info.id} resData={res} />
+
+              {res.info.promoted? <PromotedRestaurant resData={res}/>:<RestaurantCard resData={res} />}
           </Link>))}
 
       </div>
@@ -245,4 +246,5 @@ const Body = () => {
 
   );
 };
+
 export default Body;
