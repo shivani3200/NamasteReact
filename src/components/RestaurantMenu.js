@@ -20,34 +20,56 @@ const RestaurantMenu = () => {
 
   const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card;
 
-  return (
-    <div style={{ margin: "0 auto", marginTop: "100px", padding: "50px", maxWidth: "600px", textAlign: "center", backgroundColor: "#e6e6fb" }}>
-      <h1>{name}</h1>
-      <p>{cuisines.join(", ")}</p>
-      <p>{areaName}</p>
-      <br />
-      <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt={name} style={{ width: "300px", height: "200px", borderRadius: "10px" }} />
-      <p>⭐{avgRating}</p>
 
-      <h2 style={{ display: "flex", marginTop: 70 }}>Menu</h2>
-      <br />
+    return (
+  <div className="max-w-3xl mx-auto px-6 py-10 mt-40 bg-slate-50 rounded-lg shadow-md">
 
-      <ul >
-        {itemCards.map(item => (
-          <li key={item.card.info.id}
-            style={{
-              marginBottom: "10px",
-              borderBottom: "1px solid #ccc",
-              paddingBottom: "10px"
-            }}
-          >
+    {/* Restaurant Header */}
+    <div className="bg-slate-50 rounded-xl shadow-lg p-6 mb-10">
+      <h1 className="text-3xl font-bold text-gray-800">{name}</h1>
 
-            {item.card.info.name} - ₹{item.card.info.price / 100}
-            <p>{item.card.info.description}</p>
-            <br />
-          </li>
-        ))}
-      </ul>
-    </div>);
+      <p className="text-gray-500 mt-2">{cuisines?.join(", ")}</p>
+
+      <p className="text-gray-400 text-sm">{areaName}</p>
+
+      <img className="w-full h-60 object-cover rounded-lg mt-6"
+        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
+        alt={name}
+      />
+
+      <div className="flex items-center justify-between gap-4 mt-4">
+        <span className="text-red-500  font-medium px-3 py-1 rounded-lg text-sm">⭐ {avgRating}</span>
+        <span className="text-gray-600">{costForTwo}</span>
+      </div>
+    </div>
+
+    {/* Menu Section */}
+    <h2 className="text-2xl font-semibold border-b pb-2 mb-6">Menu</h2>
+
+    <div className="space-y-6 ">
+      {itemCards?.map((item) => {
+        const info = item.card.info;
+        return (
+          <div key={info.id}
+          className="flex justify-between  items-start border-b p-5  bg-white rounded-lg shadow-md">
+            <div className="w-3/4">
+              <h3 className="font-medium text-lg text-gray-800">{info.name}</h3>
+
+              <p className="text-gray-700 font-medium">
+                ₹ {info.price ? info.price / 100 : info.defaultPrice / 100}
+              </p>
+
+              <p className="text-sm text-gray-500 mt-2">{info.description}</p>
+            </div>
+
+            <button className="bg-red-500 text-white px-4  py-2 my-auto rounded-lg hover:bg-red-600 transition duration-200">Add</button>
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+);
+
 }
 export default RestaurantMenu;

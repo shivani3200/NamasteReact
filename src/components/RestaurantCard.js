@@ -1,18 +1,29 @@
 import { IMG_CDN_URL } from "../utils/constant";
 
 const RestaurantCard = (props) => {
-    const { resData } = props;
-    return (
-        <div className="res-card">
-            <img src={IMG_CDN_URL + resData.info.cloudinaryImageId} alt={resData.info.name}/>
-            <h3 style={{ color: "blue" }}> {resData.info.name}</h3>
-            <h5>{resData.info.cuisines.join(" | ")}</h5>
-            <h6>delivery : {resData.info.sla.deliveryTime} minutes</h6>
-            <h4 style={{ color: "brown" }}>{resData.info.avgRating} Stars</h4>
-            <h4>{resData.info.costForTwo}</h4>
-           <h6>{resData.info.areaName}</h6>
+  const { resData } = props;
+  return (
+    <div
+      className="res-card p-2 bg-white rounded-lg shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+      <img
+        className="w-full h-40 object-cover rounded-lg"
+        src={IMG_CDN_URL + resData.info.cloudinaryImageId}
+        alt={resData.info.name}
+      />
+      <h3 className="text-lg font-semibold text-blue-800 mt-2"> {resData.info.name}</h3>
+      <h5 className="text-sm text-gray-500">{resData.info.cuisines.join(" | ")}</h5>
+         <div className="flex justify-between items-center mt-2">
+                <span className="text-yellow-600 font-medium">
+                    ⭐ {resData.info.avgRating}
+                </span>
 
-        </div>
-    );
-}
- export default RestaurantCard;
+                <span className="text-sm text-gray-500">
+                    {resData.info.sla.deliveryTime} mins
+                </span>
+            </div>
+      <h4 className="mt-1 text-sm text-gray-600">{resData.info.costForTwo}</h4>
+      <h6 className="text-sm text-gray-400">{resData.info.areaName}</h6>
+    </div>
+  );
+};
+export default RestaurantCard;

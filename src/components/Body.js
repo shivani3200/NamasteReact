@@ -192,24 +192,21 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="body m-8">
       <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          marginTop: 90,
-          marginBottom: 20,
-        }}
+        className="filter flex  items-center mt-48 mb-8"  
       >
         {/* search */}
         <input
           type="text"
-          className="search"
+          className="search w-64 p-2 border border-gray-300 border-r-0 
+               rounded-l-xl  shadow-sm focus:outline-none focus:ring-1 focus:ring-stone-200 focus:border-stone-500 transition-colors duration-200"
           placeholder="Search restaurants..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <button onClick={() => {
+        <button className="px-4 py-2 bg-stone-200 border-l-0 
+               rounded-r-xl h-11 w-36 hover:bg-stone-300 transition-colors duration-200" onClick={() => {
           const filteredList = listOfRestaurants.filter(res =>
             res.info.name.toLowerCase().includes(searchText.toLowerCase())
           );
@@ -218,7 +215,7 @@ const Body = () => {
 
         {/* filter */}
         <button
-          className="filter-btn"
+          className="filter-btn px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-200 rounded-xl ml-4 h-11 w-auto"
           onClick={() => {
             // filter logic here
             const filteredList = listOfRestaurants.filter(
@@ -231,7 +228,7 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="res-container">
+<div className="res-container grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 ">
 
         {filteredRestaurants.map((res) => (
 
