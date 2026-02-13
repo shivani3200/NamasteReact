@@ -4,6 +4,7 @@ import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import Footer from "./Footer";
 
 // normal js variable
 // let listOfRestaurants = [
@@ -192,10 +193,11 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body m-8">
+    <div className="body">
       <div
         className="filter flex  items-center mt-48 mb-8"  
       >
+      
         {/* search */}
         <input
           type="text"
@@ -227,7 +229,6 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-
 <div className="res-container grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 ">
 
         {filteredRestaurants.map((res) => (
@@ -237,10 +238,11 @@ const Body = () => {
             key={res.info.id}>
             <RestaurantCard key={res.info.id} resData={res} />
           </Link>))}
-        ;
 
       </div>
+      <Footer />
     </div>
+
   );
 };
 export default Body;
