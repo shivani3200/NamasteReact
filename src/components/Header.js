@@ -9,7 +9,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 shadow-md">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 bg-black shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
         
         {/* Logo */}

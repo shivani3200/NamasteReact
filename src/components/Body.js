@@ -188,16 +188,17 @@ const Body = () => {
   // }
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) {
-    return <h1 className="about-container">🔴 You are offline. Please check your internet connection.</h1>
+    return (
+      <h1 className="about-container">
+        🔴 You are offline. Please check your internet connection.
+      </h1>
+    );
   }
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div
-        className="filter flex  items-center mt-48 mb-8"  
-      >
-      
+      <div className="filter flex  items-center mt-48 mb-8">
         {/* search */}
         <input
           type="text"
@@ -207,13 +208,18 @@ const Body = () => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <button className="px-4 py-2 bg-stone-200 border-l-0 
-               rounded-r-xl h-11 w-36 hover:bg-stone-300 transition-colors duration-200" onClick={() => {
-          const filteredList = listOfRestaurants.filter(res =>
-            res.info.name.toLowerCase().includes(searchText.toLowerCase())
-          );
-          setFilteredRestaurants(filteredList);
-        }}>Search</button>
+        <button
+          className="px-4 py-2 bg-stone-200 border-l-0 
+               rounded-r-xl h-11 w-36 hover:bg-stone-300 transition-colors duration-200"
+          onClick={() => {
+            const filteredList = listOfRestaurants.filter((res) =>
+              res.info.name.toLowerCase().includes(searchText.toLowerCase()),
+            );
+            setFilteredRestaurants(filteredList);
+          }}
+        >
+          Search
+        </button>
 
         {/* filter */}
         <button
@@ -229,21 +235,20 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-<div className="res-container grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 ">
-
+      <div className="res-container grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 ">
         {filteredRestaurants.map((res) => (
-
           // making each restaurant card clickable
-          <Link to={"/restaurant/" + res.info.id}
-            key={res.info.id}>
-
-              {res.info.promoted? <PromotedRestaurant resData={res}/>:<RestaurantCard resData={res} />}
-          </Link>))}
-
+          <Link to={"/restaurant/" + res.info.id} key={res.info.id}>
+            {res.info.promoted ? (
+              <PromotedRestaurant resData={res} />
+            ) : (
+              <RestaurantCard resData={res} />
+            )}
+          </Link>
+        ))}
       </div>
       <Footer />
     </div>
-
   );
 };
 

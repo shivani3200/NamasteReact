@@ -4,7 +4,7 @@ const RestaurantCard = (props) => {
   const { resData } = props;
   return (
     <div
-      className="res-card p-2 bg-white rounded-lg shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+      className="res-card p-2 rounded-lg shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer">
       <img
         className="w-full h-40 object-cover rounded-lg"
         src={IMG_CDN_URL + resData.info.cloudinaryImageId}
