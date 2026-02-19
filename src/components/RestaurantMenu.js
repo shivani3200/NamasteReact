@@ -7,8 +7,8 @@ import Accordion from "./Accordion";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-
   const resInfo = useRestaurantMenu(resId);
+  const [showItems, setShowItems] = useState(null);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -81,10 +81,16 @@ const RestaurantMenu = () => {
 
       {/* ACCORDION CATEGORIES */}
 
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <Accordion
           key={category.card?.card?.title}
           data={category?.card?.card}
+          showItems={showItems === index}
+          setShowItems={() =>
+            setShowItems((prev) =>
+               (prev === index ? null : index)
+          )
+          }
         />
       ))}
     </div>
