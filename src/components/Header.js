@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
 
+  const { loggedInUser } = useContext(UserContext);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 bg-black shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
-        
         {/* Logo */}
         <div className="flex items-center">
           <img
@@ -24,35 +26,48 @@ const Header = () => {
         {/* Nav Items */}
         <nav>
           <ul className="flex items-center gap-8 text-gray-700 font-medium">
-            
             {/* Online Status */}
             <li className="text-sm">
               <span className="mr-1">Status:</span>
-              <span className={onlineStatus ? "text-green-500" : "text-red-500"}>
+              <span
+                className={onlineStatus ? "text-green-500" : "text-red-500"}
+              >
                 {onlineStatus ? "Online" : "Offline"}
               </span>
             </li>
 
             <li>
-              <Link to="/" className="hover:text-pink-500 transition duration-200">
+              <Link
+                to="/"
+                className="hover:text-pink-500 transition duration-200"
+              >
                 Home
               </Link>
             </li>
 
             <li>
-              <Link to="/about" className="hover:text-pink-500 transition duration-200">
+              <Link
+                to="/about"
+                className="hover:text-pink-500 transition duration-200"
+              >
                 About
               </Link>
             </li>
 
             <li>
-              <Link to="/contact" className="hover:text-pink-500 transition duration-200">
+              <Link
+                to="/contact"
+                className="hover:text-pink-500 transition duration-200"
+              >
                 Contact
               </Link>
             </li>
 
             <li>
-              <Link to="/grocery" className="hover:text-pink-500 transition duration-200">
+              <Link
+                to="/grocery"
+                className="hover:text-pink-500 transition duration-200"
+              >
                 Grocery
               </Link>
             </li>
@@ -82,7 +97,7 @@ const Header = () => {
                 {btnName}
               </button>
             </li>
-
+            {btnName === "Logout" && <li className="text-sm">{loggedInUser}</li>}
           </ul>
         </nav>
       </div>
