@@ -162,11 +162,17 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const { loggedInUser, setUserName } = useContext(UserContext);
+  const [inputValue, setInputValue] = useState(loggedInUser);
 
+  // for api call
   useEffect(() => {
     fetchData();
   }, []);
-  // to get the logged in user name from context
+
+  // For syncing context → local state
+  useEffect(() => {
+    setInputValue(loggedInUser);
+  }, [loggedInUser]);
 
   const fetchData = async () => {
     // API call to get the data from server
@@ -197,7 +203,6 @@ const Body = () => {
       </h1>
     );
   }
-
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -246,8 +251,14 @@ const Body = () => {
           <input
             type="text"
             className="ml-2 p-1 border border-gray-300 rounded-md"
-            value={loggedInUser}
-            onChange={(e) => setUserName(e.target.value)} />
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setUserName(inputValue); // updates context only on Enter
+              }
+            }}
+          />
         </span>
       </div>
       <div className="res-container grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 ">
