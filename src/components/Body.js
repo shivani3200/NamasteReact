@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import RestaurantCard, { PromotedRestaurant } from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Footer from "./Footer";
+import UserContext from "../utils/UserContext";
 
 // normal js variable
 // let listOfRestaurants = [
@@ -160,10 +161,12 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
   }, []);
+  // to get the logged in user name from context
 
   const fetchData = async () => {
     // API call to get the data from server
@@ -194,6 +197,8 @@ const Body = () => {
       </h1>
     );
   }
+
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -234,6 +239,16 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+
+        {/* onchanging the input value username will also change */}
+        <span>
+          <label className="ml-4">User Name</label>
+          <input
+            type="text"
+            className="ml-2 p-1 border border-gray-300 rounded-md"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)} />
+        </span>
       </div>
       <div className="res-container grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 ">
         {filteredRestaurants.map((res) => (

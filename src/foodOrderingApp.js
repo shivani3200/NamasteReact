@@ -19,7 +19,6 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
@@ -31,6 +30,7 @@ import UserContext from "./utils/UserContext";
 // lazy loading
 // when we load the app, we dont want to load the code for grocery because it is not required at that time, we will load it when user clicks on grocery link
 const Grocery = lazy(()=> import("./components/Grocery"));
+const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
 
@@ -46,7 +46,7 @@ const AppLayout = () => {
     }, [])
 
     return (
-        <UserContext.Provider value = {{loggedInUser: userName}}>
+        <UserContext.Provider value = {{loggedInUser: userName, setUserName}}>
         <div className="app">
             <Header />
             <Outlet />
@@ -66,7 +66,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About />,
+                element: <Suspense fallback = {<h1 className="about-container">Loading...</h1>}><About/></Suspense>,
             },
             {
                 path: "/contact",
