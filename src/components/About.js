@@ -1,7 +1,7 @@
 import React from "react";
 import UserClass from "./UserClass";
 import LifeCycleMethods from "./LifeCycleMethods";
-
+import UserContext from "../utils/UserContext";
 
 // const About = () => {
 //   return (
@@ -27,13 +27,18 @@ class About extends React.Component {
   render() {
     console.log("parent - render");
     return (
-      <div className="about-container">
+      <div className="about-container mt-20 p-8">
         <h1>About Us</h1>
         <p>This is the About page of our application.</p>
         <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-
-          <UserClass name={"K Doe - class"} phone={"987-654-3210"} email={"k.doe@example.com"} />
+          <UserClass name={
+          <UserContext.Consumer>
+            {({loggedInUser}) => (<span className="text-lg font-semibold">{loggedInUser}</span>)}
+          </UserContext.Consumer>
+           } phone={"987-654-3210"} email={"k.doe@example.com"} />
         </div>
+        
+
         
         <LifeCycleMethods />
       </div>
