@@ -12,7 +12,7 @@
 // -copyright
 // -contact
 
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -23,23 +23,36 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-// import Grocery from "./components/Grocery";
+import UserContext from "./utils/UserContext";
 
 // chunking and code splitting
 // dynamic loading
 // on demand loading
 // lazy loading
 // when we load the app, we dont want to load the code for grocery because it is not required at that time, we will load it when user clicks on grocery link
-
 const Grocery = lazy(()=> import("./components/Grocery"));
 
 const AppLayout = () => {
+
+    const [userName, setUserName] = useState();
+
+    // authentication
+    useEffect(() => {
+        // make an API call and send the username and password
+        const data = {
+            name: "Shivani",
+        }
+        setUserName(data.name);
+    }, [])
+
     return (
+        <UserContext.Provider value = {{loggedInUser: userName}}>
         <div className="app">
             <Header />
             <Outlet />
-            {/* <Footer /> */}
+            {/* <Footer />  is only in home page*/}
         </div>
+        </UserContext.Provider>
     );
 }
 const appRouter = createBrowserRouter([

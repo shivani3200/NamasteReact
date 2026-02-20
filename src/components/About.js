@@ -31,14 +31,14 @@ class About extends React.Component {
         <h1>About Us</h1>
         <p>This is the About page of our application.</p>
         <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+
+          {/* react context */}
           <UserClass name={
           <UserContext.Consumer>
             {({loggedInUser}) => (<span className="text-lg font-semibold">{loggedInUser}</span>)}
           </UserContext.Consumer>
            } phone={"987-654-3210"} email={"k.doe@example.com"} />
         </div>
-        
-
         
         <LifeCycleMethods />
       </div>
