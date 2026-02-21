@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
-
   const { loggedInUser } = useContext(UserContext);
+  const cartItems = useSelector(store =>store.cart.items) //subscribing to store using selector
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 bg-black shadow-md">
@@ -76,7 +77,7 @@ const Header = () => {
             <li className="relative cursor-pointer">
               <ShoppingCartIcon className="hover:text-pink-500 transition duration-200" />
               <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 rounded-full">
-                2
+                {cartItems.length}
               </span>
             </li>
 
