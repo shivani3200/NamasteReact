@@ -37,7 +37,7 @@ const Header = () => {
               </span>
             </li>
 
-            <li>
+            <li  className="cursor-pointer hover:scale-125 transition transform duration-200">
               <Link
                 to="/"
                 className="hover:text-pink-500 transition duration-200"
@@ -46,7 +46,7 @@ const Header = () => {
               </Link>
             </li>
 
-            <li>
+            <li  className="cursor-pointer hover:scale-125 transition transform duration-200">
               <Link
                 to="/about"
                 className="hover:text-pink-500 transition duration-200"
@@ -55,7 +55,7 @@ const Header = () => {
               </Link>
             </li>
 
-            <li>
+            <li  className="cursor-pointer hover:scale-125 transition transform duration-200">
               <Link
                 to="/contact"
                 className="hover:text-pink-500 transition duration-200"
@@ -64,7 +64,7 @@ const Header = () => {
               </Link>
             </li>
 
-            <li>
+            <li className="cursor-pointer hover:scale-125 transition transform duration-200">
               <Link
                 to="/grocery"
                 className="hover:text-pink-500 transition duration-200"
@@ -74,17 +74,19 @@ const Header = () => {
             </li>
 
             {/* Cart */}
-            <li className="relative cursor-pointer">
+            <li className="relative cursor-pointer hover:scale-125 transition transform duration-200">
+              <Link to ="/cart">
               <ShoppingCartIcon className="hover:text-pink-500 transition duration-200" />
               <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs px-1.5 rounded-full">
                 {cartItems.length}
               </span>
+              </Link>
             </li>
 
             {/* Login Button */}
             <li>
               <button
-                className={`px-5 py-2 rounded-full text-white font-semibold shadow-md transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full text-white font-semibold shadow-md hover:scale-105 transition transform transition-all duration-300 ${
                   btnName === "Login"
                     ? "bg-blue-500 hover:bg-blue-600"
                     : "bg-green-500 hover:bg-green-600"

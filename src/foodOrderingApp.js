@@ -25,6 +25,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 // chunking and code splitting
 // dynamic loading
@@ -91,6 +92,10 @@ const appRouter = createBrowserRouter([
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
       },
+      {
+        path:"/cart",
+        element:<Cart/>
+      }
     ],
     errorElement: <Error />,
   },
