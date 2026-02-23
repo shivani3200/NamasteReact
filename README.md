@@ -38,3 +38,4 @@ install jest
 install babel dev dependencies
 configure babel
 configure parcel config file to disable default babel configuration
+run -> npx create-jest(jest configuration)
