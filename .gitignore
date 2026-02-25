@@ -4,3 +4,4 @@
 /.parcel-cache
 .DS_Store
 /.cache
+/coverage
