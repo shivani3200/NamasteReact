@@ -33,9 +33,14 @@
 - end to end testing
 
 # setting up testing in our app
-install react testing library
-install jest
-install babel dev dependencies
-configure babel
-configure parcel config file to disable default babel configuration
-run -> npx create-jest(jest configuration)
+- install react testing library
+- install jest
+- install babel dev dependencies
+- configure babel
+- configure parcel config file to disable default babel configuration
+- run -> npx create-jest(jest configuration)
+- install jsdom library
+- install @babel/preset-react 
+- include  @babel/preset-react  in babel config
+- npm i -D @testing-library/jest-dom
+- import '@testing-library/jest-dom'; in test file
